@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sbt assembly &&
+aws lambda update-function-code \
+  --function-name etl-organization-stats \
+  --zip-file fileb://target/etl-organization-stats.jar \
+  --profile personal-sodp \
+  --region us-east-1 \
+  --output json
